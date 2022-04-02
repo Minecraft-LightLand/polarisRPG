@@ -12,6 +12,7 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.xkmc.polaris_rpg.event.PolarisGeneralEventHandler;
 import org.xkmc.polaris_rpg.init.data.AdvancementGen;
 import org.xkmc.polaris_rpg.init.data.LangData;
 import org.xkmc.polaris_rpg.init.data.RecipeGen;
@@ -41,7 +42,7 @@ public class PolarisRPG {
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::gatherData);
 
 		MinecraftForge.EVENT_BUS.register(this);
-		//MinecraftForge.EVENT_BUS.register(PolarisGeneralEventHandler.class);
+		MinecraftForge.EVENT_BUS.register(PolarisGeneralEventHandler.class);
 
 	}
 
@@ -52,6 +53,7 @@ public class PolarisRPG {
 
 	private void clientSetup(final FMLClientSetupEvent event) {
 		event.enqueueWork(() -> {
+			//
 			PolarisClient.registerItemProperties();
 		});
 	}

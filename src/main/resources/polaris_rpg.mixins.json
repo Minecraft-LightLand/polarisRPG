@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "polaris_rpg.refmap.json",
   "mixins": [
+	"LivingEntityMixin"
   ],
   "client": [
   ],

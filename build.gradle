@@ -101,6 +101,12 @@ repositories {
         name 'tterrag maven'
         url 'https://maven.tterrag.com/'
     }
+    maven {
+        url 'https://www.cursemaven.com'
+        content {
+            includeGroup "curse.maven"
+        }
+    }
 }
 
 dependencies {
@@ -111,6 +117,9 @@ dependencies {
     shade registrate
 
     implementation fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
+
+
+    implementation fg.deobf("curse.maven:custom-npcs-221826:3665351")
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..

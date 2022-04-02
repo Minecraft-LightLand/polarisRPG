@@ -11,16 +11,16 @@ public enum Profession {
 	NONE, CASTER, SHIELD, ARCHER;
 
 	@Nullable
-	public Profession armorProfession(PlayerEntity player) {
+	public static Profession armorProfession(PlayerEntity player) {
 		Profession prof = null;
 		for (int i = 2; i < 6; i++) {
 			EquipmentSlotType slot = EquipmentSlotType.values()[i];
 			ItemStack stack = player.getItemBySlot(slot);
 			Item item = stack.getItem();
-			if (!(item instanceof PolarisArmors)) {
+			if (!(item instanceof BaseArmorItem)) {
 				return null;
 			}
-			PolarisArmors armor = (PolarisArmors) item;
+			BaseArmorItem armor = (BaseArmorItem) item;
 			Profession armor_prof = armor.armorMaterial.extra.profession;
 			if (prof == null) {
 				prof = armor_prof;

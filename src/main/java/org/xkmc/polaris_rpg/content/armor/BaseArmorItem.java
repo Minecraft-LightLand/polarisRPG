@@ -36,12 +36,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class PolarisArmors extends ArmorItem {
+public class BaseArmorItem extends ArmorItem {
 
 	public final BaseArmorMaterial armorMaterial;
 	private final Multimap<Attribute, AttributeModifier> attributes;
 
-	public PolarisArmors(BaseArmorMaterial materialIn, EquipmentSlotType slots, Properties settings) {
+	public BaseArmorItem(BaseArmorMaterial materialIn, EquipmentSlotType slots, Properties settings) {
 		super(materialIn, slots, settings);
 		armorMaterial = materialIn;
 		attributes = ImmutableMultimap.<Attribute, AttributeModifier>builder()
@@ -68,8 +68,8 @@ public class PolarisArmors extends ArmorItem {
 		for (int i = 2; i < 6; i++) {
 			EquipmentSlotType type = EquipmentSlotType.values()[i];
 			ItemStack stack = player.getItemBySlot(type);
-			if (stack.getItem() instanceof PolarisArmors) {
-				if (((PolarisArmors) stack.getItem()).armorMaterial == armorMaterial)
+			if (stack.getItem() instanceof BaseArmorItem) {
+				if (((BaseArmorItem) stack.getItem()).armorMaterial == armorMaterial)
 					continue;
 			}
 			return false;

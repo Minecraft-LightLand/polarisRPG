@@ -41,10 +41,12 @@ public class BaseArmorMaterial implements IArmorMaterial {
 		public final boolean creativeFly, home, elytraFly;
 		public final LazyValue<EffectInstance[]> ins;
 		public final Profession profession;
+		public double magicImmune;
 
 		@SafeVarargs
-		public ExtraArmorStats(Profession profession, boolean elytraFly, boolean creativeFly, boolean home, Supplier<EffectInstance>... ins) {
+		public ExtraArmorStats(Profession profession, double magicImmune, boolean elytraFly, boolean creativeFly, boolean home, Supplier<EffectInstance>... ins) {
 			this.profession = profession;
+			this.magicImmune = magicImmune;
 			this.elytraFly = elytraFly;
 			this.creativeFly = creativeFly;
 			this.home = home;
