@@ -5,12 +5,13 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "polaris_rpg.refmap.json",
   "mixins": [
-	"LivingEntityMixin"
+    "LivingEntityMixin",
+    "PlayerEntityMixin"
   ],
   "client": [
   ],
   "injectors": {
-	"defaultRequire": 1
+    "defaultRequire": 1
   },
   "minVersion": "0.8"
 }
