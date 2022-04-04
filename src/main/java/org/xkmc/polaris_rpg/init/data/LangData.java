@@ -27,5 +27,8 @@ public enum LangData {
 		for (LangData data : LangData.values()) {
 			pvd.add(data.key, data.def);
 		}
+		pvd.add("itemGroup.polaris_rpg.material", "Tools and Materials");
+		pvd.add("itemGroup.polaris_rpg.profession", "Professional Equipments");
+		pvd.add("itemGroup.polaris_rpg.generated", "Common Equipments");
 	}
 }

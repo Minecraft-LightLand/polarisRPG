@@ -1,0 +1,12 @@
+{
+  "polaris_rpg": {
+	"tooltip": {
+	  "armor.creative_fly": "启用创造飞行",
+	  "armor.elytra_fly": "启用鞘翅飞行",
+	  "armor.full_suit": "当装备全套盔甲时:",
+	  "armor.home": "坠入虚空时传送回出生点",
+	  "storage.slot": "背包升级: %s / %s",
+	  "storage.owner": "所有者: %s"
+	}
+  }
+}

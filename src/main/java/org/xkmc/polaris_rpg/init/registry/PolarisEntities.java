@@ -2,8 +2,8 @@ package org.xkmc.polaris_rpg.init.registry;
 
 import com.tterrag.registrate.util.entry.EntityEntry;
 import net.minecraft.entity.EntityClassification;
-import org.xkmc.polaris_rpg.content.archer.entity.GenericArrowEntity;
-import org.xkmc.polaris_rpg.content.archer.entity.GenericArrowRenderer;
+import org.xkmc.polaris_rpg.content.archer.GenericArrowEntity;
+import org.xkmc.polaris_rpg.content.archer.GenericArrowRenderer;
 import org.xkmc.polaris_rpg.init.PolarisRPG;
 
 public class PolarisEntities {

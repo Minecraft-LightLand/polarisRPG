@@ -3,7 +3,7 @@ package org.xkmc.polaris_rpg.init;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.item.ItemModelsProperties;
 import net.minecraft.util.ResourceLocation;
-import org.xkmc.polaris_rpg.content.archer.item.GenericBowItem;
+import org.xkmc.polaris_rpg.content.archer.GenericBowItem;
 import org.xkmc.polaris_rpg.content.backpack.BackpackItem;
 import org.xkmc.polaris_rpg.init.registry.PolarisItems;
 

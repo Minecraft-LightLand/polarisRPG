@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import org.xkmc.polaris_rpg.content.archer.feature.bow.GlowTargetAimFeature;
+import org.xkmc.polaris_rpg.content.archer.bow.GlowTargetAimFeature;
 import org.xkmc.polaris_rpg.util.RayTraceUtil;
 
 @Mixin(Entity.class)

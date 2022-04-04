@@ -1,10 +1,5 @@
 package org.xkmc.polaris_rpg.content.archer.feature;
 
-import org.xkmc.polaris_rpg.content.archer.feature.types.FlightControlFeature;
-import org.xkmc.polaris_rpg.content.archer.feature.types.OnHitFeature;
-import org.xkmc.polaris_rpg.content.archer.feature.types.OnPullFeature;
-import org.xkmc.polaris_rpg.content.archer.feature.types.OnShootFeature;
-
 import java.util.ArrayList;
 import java.util.List;
 

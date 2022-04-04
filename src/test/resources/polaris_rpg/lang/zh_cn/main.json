@@ -1,0 +1,18 @@
+{
+  "container.polaris_rpg": {
+	"backpack": "背包",
+	"dimensional_storage": "空间钥匙"
+  },
+  "effect.polaris_rpg": {
+	"quick_pull": "快速拉弓",
+	"run_bow": "疾行射手"
+  },
+  "entity.polaris_rpg": {
+	"generic_arrow": "箭"
+  },
+  "itemGroup.polaris_rpg": {
+	"material": "道具材料",
+	"profession": "职业装备",
+	"generated": "通用装备"
+  }
+}
