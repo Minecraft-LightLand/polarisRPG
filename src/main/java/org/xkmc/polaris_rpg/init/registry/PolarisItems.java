@@ -81,13 +81,13 @@ public class PolarisItems {
 
 
 	private static void createBackpackModel(DataGenContext<Item, BackpackItem> ctx, RegistrateItemModelProvider pvd) {
-		ItemModelBuilder builder = pvd.withExistingParent(ctx.getName(), "lightland:backpack");
+		ItemModelBuilder builder = pvd.withExistingParent(ctx.getName(), "polaris_rpg:backpack");
 		builder.override().predicate(new ResourceLocation("open"), 1).model(
 				new ModelFile.UncheckedModelFile(PolarisRPG.MODID + ":item/backpack_open"));
 	}
 
 	private static void createWorldChestModel(DataGenContext<Item, WorldChestItem> ctx, RegistrateItemModelProvider pvd) {
-		ItemModelBuilder builder = pvd.withExistingParent(ctx.getName(), "lightland:dimensional_storage");
+		ItemModelBuilder builder = pvd.withExistingParent(ctx.getName(), "polaris_rpg:dimensional_storage");
 	}
 
 	private static void createEnderBackpackModel(DataGenContext<Item, EnderBackpackItem> ctx, RegistrateItemModelProvider pvd) {

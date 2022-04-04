@@ -2,9 +2,15 @@ package org.xkmc.polaris_rpg.network.packets;
 
 import dev.lcy0x1.core.util.SerialClass;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.inventory.container.ChestContainer;
 import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.SimpleNamedContainerProvider;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.network.NetworkEvent;
+import net.minecraftforge.fml.network.NetworkHooks;
+import org.xkmc.polaris_rpg.content.backpack.BackpackItem;
+import org.xkmc.polaris_rpg.content.backpack.EnderBackpackItem;
+import org.xkmc.polaris_rpg.content.backpack.WorldChestItem;
 import org.xkmc.polaris_rpg.network.SerialPacketBase;
 
 @SerialClass
@@ -39,14 +45,13 @@ public class SlotClickToServer extends SerialPacketBase {
 			if (wid == 0 || menu.containerId == 0 || wid != menu.containerId) return;
 			stack = ctx.getSender().containerMenu.getSlot(index).getItem();
 		}
-		/* TODO backpack
 		if (slot >= 0 && stack.getItem() instanceof BackpackItem) {
 			new BackpackItem.MenuPvd(player, slot, stack).open();
 		} else if (stack.getItem() instanceof EnderBackpackItem) {
-			NetworkHooks.openGui(player, new SimpleMenuProvider((id, inv, pl) ->
-					ChestMenu.threeRows(id, inv, pl.getEnderChestInventory()), stack.getDisplayName()));
-		} else if (stack.getItem() instanceof WorldChestItem chest) {
-			new WorldChestItem.MenuPvd(player, stack, chest).open();
-		}*/
+			NetworkHooks.openGui(player, new SimpleNamedContainerProvider((id, inv, pl) ->
+					ChestContainer.threeRows(id, inv, pl.getEnderChestInventory()), stack.getDisplayName()));
+		} else if (stack.getItem() instanceof WorldChestItem) {
+			new WorldChestItem.MenuPvd(player, stack, (WorldChestItem) stack.getItem()).open();
+		}
 	}
 }

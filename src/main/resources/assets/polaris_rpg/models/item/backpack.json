@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "polaris_rpg:item/backpack",
+    "layer1": "polaris_rpg:item/backpack_overlay"
+  }
+}

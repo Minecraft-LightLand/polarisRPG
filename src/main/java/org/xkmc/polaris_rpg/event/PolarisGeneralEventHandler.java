@@ -18,7 +18,11 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import org.xkmc.polaris_rpg.content.backpack.BackpackItem;
+import org.xkmc.polaris_rpg.content.backpack.EnderBackpackItem;
+import org.xkmc.polaris_rpg.content.backpack.WorldChestItem;
 import org.xkmc.polaris_rpg.content.item.armor.BaseArmorItem;
+import org.xkmc.polaris_rpg.network.packets.SlotClickToServer;
 import org.xkmc.polaris_rpg.util.UUIDUtil;
 
 import java.util.Objects;
@@ -85,13 +89,13 @@ public class PolarisGeneralEventHandler {
 				int inv = b1 ? slot.getSlotIndex() : -1;
 				int ind = inv == -1 ? slot.index : -1;
 				int wid = cont.getMenu().containerId;
-				/* TODO backpack
+
 				if ((inv >= 0 || ind >= 0) && (slot.getItem().getItem() instanceof EnderBackpackItem ||
 						slot.getItem().getItem() instanceof WorldChestItem ||
 						inv >= 0 && slot.getItem().getItem() instanceof BackpackItem)) {
 					new SlotClickToServer(ind, inv, wid).toServer();
 					event.setCanceled(true);
-				}*/
+				}
 			}
 		}
 

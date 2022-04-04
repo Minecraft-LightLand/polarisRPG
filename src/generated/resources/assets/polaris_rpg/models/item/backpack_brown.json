@@ -1,0 +1,11 @@
+{
+  "parent": "polaris_rpg:item/backpack",
+  "overrides": [
+    {
+      "predicate": {
+        "minecraft:open": 1.0
+      },
+      "model": "polaris_rpg:item/backpack_open"
+    }
+  ]
+}
