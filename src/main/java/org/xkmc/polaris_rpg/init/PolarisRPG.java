@@ -30,9 +30,11 @@ public class PolarisRPG {
 
 		PolarisItems.register();
 		PolarisBlocks.register();
+		PolarisEntities.register();
 		PolarisContainers.register();
 		PolarisRecipeTypes.register();
 		PolarisMagic.register();
+
 		REGISTRATE.addDataGenerator(ProviderType.LANG, LangData::genLang);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, RecipeGen::genRecipe);
 		REGISTRATE.addDataGenerator(ProviderType.ADVANCEMENT, AdvancementGen::genAdvancement);

@@ -17,6 +17,7 @@ import org.xkmc.polaris_rpg.content.archer.feature.bow.GlowTargetAimFeature;
 import org.xkmc.polaris_rpg.content.archer.feature.bow.IGlowFeature;
 import org.xkmc.polaris_rpg.content.archer.item.GenericBowItem;
 import org.xkmc.polaris_rpg.content.item.IGlowingTarget;
+import org.xkmc.polaris_rpg.init.registry.PolarisMagic;
 import org.xkmc.polaris_rpg.util.RayTraceUtil;
 
 import java.util.ArrayList;
@@ -105,7 +106,7 @@ public class ClientEntityEffectRenderEvents {
 			GenericBowItem bow = (GenericBowItem) player.getMainHandItem().getItem();
 			float f = event.getFov();
 			float i = player.getTicksUsingItem();
-			EffectInstance ins = null;//TODO player.getEffect(VanillaMagicRegistrate.QUICK_PULL.get());
+			EffectInstance ins = player.getEffect(PolarisMagic.QUICK_PULL.get());
 			if (ins != null) {
 				i *= 1.5 + 0.5 * ins.getAmplifier();
 			}

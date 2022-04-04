@@ -4,17 +4,23 @@ import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.util.NonNullLazy;
 import org.xkmc.polaris_rpg.content.archer.feature.FeatureList;
+import org.xkmc.polaris_rpg.content.archer.feature.arrow.EnderArrowFeature;
+import org.xkmc.polaris_rpg.content.archer.feature.arrow.ExplodeArrowFeature;
+import org.xkmc.polaris_rpg.content.archer.feature.arrow.NoFallArrowFeature;
 import org.xkmc.polaris_rpg.content.archer.feature.bow.DefaultShootFeature;
+import org.xkmc.polaris_rpg.content.archer.feature.bow.EnderShootFeature;
+import org.xkmc.polaris_rpg.content.archer.feature.bow.GlowTargetAimFeature;
+import org.xkmc.polaris_rpg.content.archer.feature.bow.WindBowFeature;
 import org.xkmc.polaris_rpg.content.archer.item.GenericArrowItem;
 import org.xkmc.polaris_rpg.content.archer.item.GenericBowItem;
 import org.xkmc.polaris_rpg.init.PolarisRPG;
 
-import java.util.Locale;
 import java.util.function.Consumer;
 
 import static org.xkmc.polaris_rpg.init.PolarisRPG.REGISTRATE;
@@ -22,29 +28,29 @@ import static org.xkmc.polaris_rpg.init.PolarisRPG.REGISTRATE;
 @SuppressWarnings({"rawtype", "unchecked", "unused"})
 public class PolarisItems {
 
-	public enum SimpleItem {
-		;
-
-		public final ItemEntry<Item> entry;
-
-		SimpleItem() {
-			entry = PolarisRPG.REGISTRATE.item(name().toLowerCase(Locale.ROOT), Item::new)
-					.defaultModel().defaultLang().register();
-		}
-
-		public static void register() {
-		}
-
+	static {
+		REGISTRATE.itemGroup(() -> ItemGroup.TAB_COMBAT);
 	}
 
-	public static final ItemEntry<GenericBowItem> STARTER_BOW;
-	public static final ItemEntry<GenericArrowItem> STARTER_ARROW;
+	public static final ItemEntry<GenericBowItem> STARTER_BOW, IRON_BOW, MAGNIFY_BOW, ENDER_AIM_BOW, WIND_BOW;
+	public static final ItemEntry<GenericArrowItem> STARTER_ARROW, IRON_ARROW, NO_FALL_ARROW, ENDER_ARROW, TNT_2_ARROW;
 
 	static {
 		STARTER_BOW = genBow("starter_bow", 600, 0, 0, FeatureList::end);
-		STARTER_ARROW = genArrow("starter_arrow", 0, 0, true, FeatureList::end);
-	}
+		IRON_BOW = genBow("iron_bow", 1200, 1, 0, 40, 3.9f, FeatureList::end);
+		MAGNIFY_BOW = genBow("magnify_bow", 600, 0, 0, 20, 3.0f, 60, 0.9f, e -> e.add(new GlowTargetAimFeature(128)));
+		ENDER_AIM_BOW = genBow("ender_aim_bow", 8, -1, 0, e -> e.add(new EnderShootFeature(128)));
+		WIND_BOW = genBow("wind_bow", 600, 0, 1, 10, 3.9f, e -> e
+				.add(new NoFallArrowFeature(40))
+				.add(new WindBowFeature()));
 
+		STARTER_ARROW = genArrow("starter_arrow", 0, 0, true, FeatureList::end);
+		IRON_ARROW = genArrow("iron_arrow", 1, 1, false, FeatureList::end);
+		NO_FALL_ARROW = genArrow("no_fall_arrow", 0, 0, false, e -> e.add(new NoFallArrowFeature(40)));
+		ENDER_ARROW = genArrow("ender_arrow", -1, 0, false, e -> e.add(new EnderArrowFeature()));
+		TNT_2_ARROW = genArrow("tnt_arrow_lv2", 0, 0, false, e -> e.add(new ExplodeArrowFeature(4)));
+
+	}
 
 	public static ItemEntry<GenericBowItem> genBow(String id, int durability, float damage, int punch, Consumer<FeatureList> consumer) {
 		return genBow(id, durability, damage, punch, 20, 3.0f, 20, 0.15f, consumer);

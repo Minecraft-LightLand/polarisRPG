@@ -20,4 +20,8 @@ public class PolarisEntities {
 				.defaultLang().register();
 	}
 
+	public static void register(){
+
+	}
+
 }

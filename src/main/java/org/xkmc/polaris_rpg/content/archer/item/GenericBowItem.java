@@ -1,5 +1,6 @@
 package org.xkmc.polaris_rpg.content.archer.item;
 
+import dev.lcy0x1.base.Proxy;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
@@ -21,6 +22,7 @@ import org.xkmc.polaris_rpg.content.archer.feature.FeatureList;
 import org.xkmc.polaris_rpg.content.archer.feature.bow.WindBowFeature;
 import org.xkmc.polaris_rpg.content.item.FastItem;
 import org.xkmc.polaris_rpg.init.PolarisClient;
+import org.xkmc.polaris_rpg.init.registry.PolarisMagic;
 import org.xkmc.polaris_rpg.util.GenericItemStack;
 
 import java.util.function.Predicate;
@@ -143,7 +145,7 @@ public class GenericBowItem extends BowItem implements FastItem {
 
 	public float getPullForTime(LivingEntity entity, float time) {
 		float f = time / config.pull_time;
-		EffectInstance ins = null;//TODO entity.getEffect(VanillaMagicRegistrate.QUICK_PULL.get());
+		EffectInstance ins =  entity.getEffect(PolarisMagic.QUICK_PULL.get());
 		if (ins != null) {
 			f *= (1.5 + 0.5 * ins.getAmplifier());
 		}
@@ -224,7 +226,7 @@ public class GenericBowItem extends BowItem implements FastItem {
 
 	@Override
 	public boolean isFast(ItemStack stack) {
-		// TODO if (Proxy.getPlayer().hasEffect(VanillaMagicRegistrate.RUN_BOW.get())) return true;
+		if (Proxy.getPlayer().hasEffect(PolarisMagic.RUN_BOW.get())) return true;
 		return config.feature.pull.stream().anyMatch(e -> e instanceof WindBowFeature);
 	}
 
