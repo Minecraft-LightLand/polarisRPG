@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "polaris_rpg:ender_pocket"
+    ]
+  },
+  "criteria": {
+    "has_ender_pocket": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "polaris_rpg:ender_pocket"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "polaris_rpg:ender_pocket"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ender_pocket",
+      "has_the_recipe"
+    ]
+  ]
+}

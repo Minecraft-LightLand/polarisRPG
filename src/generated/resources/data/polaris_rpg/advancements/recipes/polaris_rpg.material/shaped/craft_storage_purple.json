@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "polaris_rpg:shaped/craft_storage_purple"
+    ]
+  },
+  "criteria": {
+    "has_dimensional_storage_purple": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "polaris_rpg:dimensional_storage_purple"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "polaris_rpg:shaped/craft_storage_purple"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_dimensional_storage_purple",
+      "has_the_recipe"
+    ]
+  ]
+}

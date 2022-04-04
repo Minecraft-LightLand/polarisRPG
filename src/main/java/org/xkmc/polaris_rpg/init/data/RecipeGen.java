@@ -31,7 +31,7 @@ public class RecipeGen {
 					.group("backpack_craft").pattern("ADA").pattern("BCB").pattern("ADA")
 					.define('A', Tags.Items.LEATHER).define('B', wool)
 					.define('C', Items.CHEST).define('D', Items.IRON_INGOT)
-					.save(pvd,"polaris_rpg:shaped/craft_backpack_" + color.getName());
+					.save(pvd, "polaris_rpg:shaped/craft_backpack_" + color.getName());
 
 			unlock(pvd, new CustomShapelessBuilder<>(PolarisRecipeTypes.RSC_BAG_DYE, backpack, 1)::unlockedBy, backpack)
 					.group("backpack_dye").requires(Ingredient.of(PolarisTags.AllItemTags.BACKPACKS.tag))
@@ -40,7 +40,26 @@ public class RecipeGen {
 			unlock(pvd, new SmithingRecipeBuilder(PolarisRecipeTypes.RSC_BAG_UPGRADE.get(), Ingredient.of(backpack),
 					Ingredient.of(PolarisItems.ENDER_POCKET.get()), backpack)::unlocks, backpack)
 					.save(pvd, "polaris_rpg:smithing/upgrade_backpack_" + color.getName());
+
+			Item storage = PolarisItems.DIMENSIONAL_STORAGE[i].get();
+
+			unlock(pvd, new ShapedRecipeBuilder(storage, 1)::unlockedBy, storage)
+					.group("dimensional_storage_craft").pattern("DAD").pattern("ACA").pattern("BAB")
+					.define('A', PolarisItems.ENDER_POCKET.get()).define('B', wool)
+					.define('C', Items.ENDER_CHEST).define('D', Items.POPPED_CHORUS_FRUIT)
+					.save(pvd, "polaris_rpg:shaped/craft_storage_" + color.getName());
 		}
+		Item pocket = PolarisItems.ENDER_POCKET.get();
+		unlock(pvd, new ShapedRecipeBuilder(pocket, 1)::unlockedBy, pocket)
+				.pattern("CBC").pattern("BAB").pattern("CBC")
+				.define('A', Tags.Items.LEATHER).define('B', Items.ENDER_PEARL)
+				.define('C', Items.GOLD_NUGGET).save(pvd);
+		Item ender = PolarisItems.ENDER_BACKPACK.get();
+		unlock(pvd, new ShapedRecipeBuilder(ender, 1)::unlockedBy, ender)
+				.pattern("ADA").pattern("BCB").pattern("ADA")
+				.define('A', Tags.Items.LEATHER).define('B', Items.ENDER_PEARL)
+				.define('C', Items.ENDER_CHEST).define('D', Items.IRON_INGOT)
+				.save(pvd);
 	}
 
 	private static <T> T unlock(RegistrateRecipeProvider pvd, BiFunction<String, ICriterionInstance, T> func, Item item) {
