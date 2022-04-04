@@ -45,7 +45,7 @@ public class BackpackItem extends Item {
 	}
 
 	@OnlyIn(Dist.CLIENT)
-	public static float isOpened(ItemStack stack, ClientWorld level, LivingEntity entity, int i) {
+	public static float isOpened(ItemStack stack, ClientWorld level, LivingEntity entity) {
 		if (entity != Proxy.getClientPlayer()) return 0;
 		Screen screen = Minecraft.getInstance().screen;
 		if (screen instanceof BackpackScreen) {
