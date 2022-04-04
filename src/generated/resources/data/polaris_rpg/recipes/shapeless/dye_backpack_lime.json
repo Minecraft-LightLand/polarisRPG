@@ -1,0 +1,15 @@
+{
+  "type": "polaris_rpg:backpack_dye",
+  "group": "backpack_dye",
+  "ingredients": [
+    {
+      "tag": "polaris_rpg:backpacks"
+    },
+    {
+      "item": "minecraft:lime_dye"
+    }
+  ],
+  "result": {
+    "item": "polaris_rpg:backpack_lime"
+  }
+}

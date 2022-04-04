@@ -58,13 +58,19 @@ public class PolarisItems {
 		REGISTRATE.itemGroup(() -> TAB_MAIN);
 	}
 
+	public static final ItemEntry<Item> ENDER_POCKET;
+
 	public static final ItemEntry<BackpackItem>[] BACKPACKS;
 	public static final ItemEntry<WorldChestItem>[] DIMENSIONAL_STORAGE;
 	public static final ItemEntry<EnderBackpackItem> ENDER_BACKPACK;
+
 	public static final ItemEntry<GenericBowItem> STARTER_BOW, IRON_BOW, MAGNIFY_BOW, ENDER_AIM_BOW, WIND_BOW;
 	public static final ItemEntry<GenericArrowItem> STARTER_ARROW, IRON_ARROW, NO_FALL_ARROW, ENDER_ARROW, TNT_2_ARROW;
 
 	static {
+		{
+			ENDER_POCKET = simpleItem("ender_pocket");
+		}
 		{
 			BACKPACKS = new ItemEntry[16];
 			for (int i = 0; i < 16; i++) {
@@ -101,6 +107,9 @@ public class PolarisItems {
 		}
 	}
 
+	public static ItemEntry<Item> simpleItem(String id) {
+		return REGISTRATE.item(id, Item::new).defaultModel().defaultLang().register();
+	}
 
 	private static void createBackpackModel(DataGenContext<Item, BackpackItem> ctx, RegistrateItemModelProvider pvd) {
 		ItemModelBuilder builder = pvd.withExistingParent(ctx.getName(), "polaris_rpg:backpack");

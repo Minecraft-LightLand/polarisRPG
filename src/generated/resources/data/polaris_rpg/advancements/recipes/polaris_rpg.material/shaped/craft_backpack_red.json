@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "polaris_rpg:shaped/craft_backpack_red"
+    ]
+  },
+  "criteria": {
+    "has_backpack_red": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "polaris_rpg:backpack_red"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "polaris_rpg:shaped/craft_backpack_red"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_backpack_red",
+      "has_the_recipe"
+    ]
+  ]
+}

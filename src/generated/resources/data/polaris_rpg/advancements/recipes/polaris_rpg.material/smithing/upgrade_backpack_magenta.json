@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "polaris_rpg:smithing/upgrade_backpack_magenta"
+    ]
+  },
+  "criteria": {
+    "has_backpack_magenta": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "polaris_rpg:backpack_magenta"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "polaris_rpg:smithing/upgrade_backpack_magenta"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_backpack_magenta",
+      "has_the_recipe"
+    ]
+  ]
+}

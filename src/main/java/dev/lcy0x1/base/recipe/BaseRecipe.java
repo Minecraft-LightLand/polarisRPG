@@ -1,4 +1,4 @@
-package dev.lcy0x1.base;
+package dev.lcy0x1.base.recipe;
 
 import dev.lcy0x1.core.util.RecSerializer;
 import mcp.MethodsReturnNonnullByDefault;

@@ -37,8 +37,8 @@ public abstract class ResourceOrganizer {
         File f = new File("./src/test/resources");
         for (File fi : f.listFiles()) {
             MODID = fi.getName();
-            delete(new File("./src/main/resources/assets/lightland/textures/item"));
-            delete(new File("./src/main/resources/assets/lightland/textures/block"));
+            delete(new File("./src/main/resources/assets/polaris_rpg/textures/item"));
+            delete(new File("./src/main/resources/assets/polaris_rpg/textures/block"));
             if (!fi.isDirectory())
                 continue;
             for (ResourceOrganizer obj : MAP.values()) {
@@ -75,7 +75,7 @@ public abstract class ResourceOrganizer {
     }
 
     public final String getResourceFolder(boolean main) {
-        return (main ? "./src/main/resources/" : "./lightland/src/test/resources/");
+        return (main ? "./src/main/resources/" : "./src/test/resources/");
     }
 
     protected String readFile(String path) {

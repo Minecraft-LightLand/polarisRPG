@@ -1,0 +1,12 @@
+{
+  "type": "polaris_rpg:backpack_upgrade",
+  "base": {
+    "item": "polaris_rpg:backpack_black"
+  },
+  "addition": {
+    "item": "polaris_rpg:ender_pocket"
+  },
+  "result": {
+    "item": "polaris_rpg:backpack_black"
+  }
+}
