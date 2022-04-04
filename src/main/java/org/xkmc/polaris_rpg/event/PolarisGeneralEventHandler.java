@@ -18,9 +18,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import org.xkmc.polaris_rpg.content.damage.BaseDamage;
 import org.xkmc.polaris_rpg.content.item.armor.BaseArmorItem;
-import org.xkmc.polaris_rpg.network.packets.SlotClickToServer;
 import org.xkmc.polaris_rpg.util.UUIDUtil;
 
 import java.util.Objects;
@@ -33,10 +31,6 @@ public class PolarisGeneralEventHandler {
 
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public static void onLivingAttack(LivingAttackEvent event) {
-		if (!(event.getSource() instanceof BaseDamage)) {
-			event.setCanceled(true);
-			event.getEntityLiving().hurt(BaseDamage.transform(event.getSource()), event.getAmount());
-		}
 	}
 
 	@SubscribeEvent

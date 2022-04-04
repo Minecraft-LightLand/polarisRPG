@@ -12,11 +12,12 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.xkmc.polaris_rpg.event.PolarisGeneralEventHandler;
+import org.xkmc.polaris_rpg.event.*;
 import org.xkmc.polaris_rpg.init.data.AdvancementGen;
 import org.xkmc.polaris_rpg.init.data.LangData;
 import org.xkmc.polaris_rpg.init.data.RecipeGen;
 import org.xkmc.polaris_rpg.init.registry.*;
+import org.xkmc.polaris_rpg.network.PacketHandler;
 
 @Mod(PolarisRPG.MODID)
 public class PolarisRPG {
@@ -44,12 +45,18 @@ public class PolarisRPG {
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::gatherData);
 
 		MinecraftForge.EVENT_BUS.register(this);
+		MinecraftForge.EVENT_BUS.register(GenericEventHandler.class);
 		MinecraftForge.EVENT_BUS.register(PolarisGeneralEventHandler.class);
+		MinecraftForge.EVENT_BUS.register(ItemUseEventHandler.class);
+		MinecraftForge.EVENT_BUS.register(EffectSyncEvents.class);
+		MinecraftForge.EVENT_BUS.register(ClientEntityEffectRenderEvents.class);
 
 	}
 
 	private void commonSetup(final FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
+			PacketHandler.registerPackets();
+			EffectSyncEvents.init();
 		});
 	}
 
