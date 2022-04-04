@@ -1,10 +1,16 @@
 package org.xkmc.polaris_rpg.content.capability.worldstorage;
 
+import dev.lcy0x1.core.util.Automator;
+import dev.lcy0x1.core.util.ExceptionHandler;
 import dev.lcy0x1.core.util.SerialClass;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.INBT;
+import net.minecraft.util.Direction;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 
+import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Optional;
 import java.util.UUID;
@@ -12,23 +18,40 @@ import java.util.UUID;
 @SerialClass
 public class WorldStorage {
 
+	public static class Storage implements Capability.IStorage<WorldStorage> {
+
+		@Nullable
+		@Override
+		public INBT writeNBT(Capability<WorldStorage> capability, WorldStorage obj, Direction direction) {
+			return Automator.toTag(new CompoundNBT(), obj);
+		}
+
+		@Override
+		public void readNBT(Capability<WorldStorage> capability, WorldStorage obj, Direction direction, INBT inbt) {
+			ExceptionHandler.get(() -> Automator.fromTag((CompoundNBT) inbt, WorldStorage.class, obj, f -> true));
+		}
+
+	}
+
+	public static final Storage STORAGE = new Storage();
+
 	public static Capability<WorldStorage> CAPABILITY;
+
+	public static void register() {
+		CapabilityManager.INSTANCE.register(WorldStorage.class, STORAGE, WorldStorage::new);
+	}
 
 	public static WorldStorage get(ServerWorld level) {
 		return level.getServer().overworld().getCapability(CAPABILITY).resolve().get();
 	}
 
 
-	public final ServerWorld level;
+	public ServerWorld level;
 
 	@SerialClass.SerialField
 	private final HashMap<String, CompoundNBT> storage = new HashMap<>();
 
 	private final HashMap<UUID, StorageContainer[]> cache = new HashMap<>();
-
-	public WorldStorage(ServerWorld level) {
-		this.level = level;
-	}
 
 	public Optional<StorageContainer> getOrCreateStorage(UUID id, int color, long password) {
 		if (cache.containsKey(id)) {

@@ -24,7 +24,8 @@ public class WorldStorageCapability implements ICapabilitySerializable<CompoundN
 	public WorldStorageCapability(ServerWorld level) {
 		this.w = level;
 		if (level == null) LogManager.getLogger().error("world not present");
-		handler = new WorldStorage(level);
+		handler = new WorldStorage();
+		handler.level = level;
 		lo = LazyOptional.of(() -> this.handler);
 	}
 
