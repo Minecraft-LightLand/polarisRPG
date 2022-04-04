@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "polaris_rpg:backpack_white",
+    "polaris_rpg:backpack_orange",
+    "polaris_rpg:backpack_magenta",
+    "polaris_rpg:backpack_light_blue",
+    "polaris_rpg:backpack_yellow",
+    "polaris_rpg:backpack_lime",
+    "polaris_rpg:backpack_pink",
+    "polaris_rpg:backpack_gray",
+    "polaris_rpg:backpack_light_gray",
+    "polaris_rpg:backpack_cyan",
+    "polaris_rpg:backpack_purple",
+    "polaris_rpg:backpack_blue",
+    "polaris_rpg:backpack_brown",
+    "polaris_rpg:backpack_green",
+    "polaris_rpg:backpack_red",
+    "polaris_rpg:backpack_black"
+  ]
+}

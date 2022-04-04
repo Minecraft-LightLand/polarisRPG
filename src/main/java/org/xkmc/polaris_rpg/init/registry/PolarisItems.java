@@ -6,6 +6,7 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.item.DyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ModelFile;
@@ -24,16 +25,37 @@ import org.xkmc.polaris_rpg.content.backpack.BackpackItem;
 import org.xkmc.polaris_rpg.content.backpack.EnderBackpackItem;
 import org.xkmc.polaris_rpg.content.backpack.WorldChestItem;
 import org.xkmc.polaris_rpg.init.PolarisRPG;
+import org.xkmc.polaris_rpg.init.data.PolarisTags;
 
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 import static org.xkmc.polaris_rpg.init.PolarisRPG.REGISTRATE;
 
 @SuppressWarnings({"rawtype", "unchecked", "unused"})
 public class PolarisItems {
 
+	public static class Tab extends ItemGroup {
+
+		private final Supplier<ItemEntry> icon;
+
+		public Tab(String id, Supplier<ItemEntry> icon) {
+			super(PolarisRPG.MODID + "." + id);
+			this.icon = icon;
+		}
+
+		@Override
+		public ItemStack makeIcon() {
+			return icon.get().asStack();
+		}
+	}
+
+	public static final Tab TAB_MAIN = new Tab("material", () -> PolarisItems.ENDER_BACKPACK);
+	//public static final Tab TAB_PROF = new Tab("profession", () -> PolarisItems.STARTER_BOW);
+	//public static final Tab TAB_QUEST = new Tab("generated", () -> PolarisItems.GEN_ITEM[0][0]);
+
 	static {
-		REGISTRATE.itemGroup(() -> ItemGroup.TAB_COMBAT);
+		REGISTRATE.itemGroup(() -> TAB_MAIN);
 	}
 
 	public static final ItemEntry<BackpackItem>[] BACKPACKS;
@@ -48,7 +70,7 @@ public class PolarisItems {
 			for (int i = 0; i < 16; i++) {
 				DyeColor color = DyeColor.values()[i];
 				BACKPACKS[i] = REGISTRATE.item("backpack_" + color.getName(), p -> new BackpackItem(color, p.stacksTo(1)))
-						.model(PolarisItems::createBackpackModel)
+						.model(PolarisItems::createBackpackModel).tag(PolarisTags.AllItemTags.BACKPACKS.tag)
 						.color(() -> () -> (stack, val) -> val == 0 ? -1 : ((BackpackItem) stack.getItem()).color.getMaterialColor().col)
 						.defaultLang().register();
 			}
@@ -56,7 +78,7 @@ public class PolarisItems {
 			for (int i = 0; i < 16; i++) {
 				DyeColor color = DyeColor.values()[i];
 				DIMENSIONAL_STORAGE[i] = REGISTRATE.item("dimensional_storage_" + color.getName(), p -> new WorldChestItem(color, p.stacksTo(1)))
-						.model(PolarisItems::createWorldChestModel)
+						.model(PolarisItems::createWorldChestModel).tag(PolarisTags.AllItemTags.DIMENSIONAL_STORAGES.tag)
 						.color(() -> () -> (stack, val) -> val == 0 ? -1 : ((WorldChestItem) stack.getItem()).color.getMaterialColor().col)
 						.defaultLang().register();
 			}

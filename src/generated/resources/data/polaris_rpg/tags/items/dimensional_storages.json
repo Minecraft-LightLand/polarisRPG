@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "polaris_rpg:dimensional_storage_white",
+    "polaris_rpg:dimensional_storage_orange",
+    "polaris_rpg:dimensional_storage_magenta",
+    "polaris_rpg:dimensional_storage_light_blue",
+    "polaris_rpg:dimensional_storage_yellow",
+    "polaris_rpg:dimensional_storage_lime",
+    "polaris_rpg:dimensional_storage_pink",
+    "polaris_rpg:dimensional_storage_gray",
+    "polaris_rpg:dimensional_storage_light_gray",
+    "polaris_rpg:dimensional_storage_cyan",
+    "polaris_rpg:dimensional_storage_purple",
+    "polaris_rpg:dimensional_storage_blue",
+    "polaris_rpg:dimensional_storage_brown",
+    "polaris_rpg:dimensional_storage_green",
+    "polaris_rpg:dimensional_storage_red",
+    "polaris_rpg:dimensional_storage_black"
+  ]
+}

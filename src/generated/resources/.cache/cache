@@ -77,3 +77,5 @@ b70dbdaf7c793441d13b0d8fc655a29e7883f403 assets/polaris_rpg/models/item/wind_bow
 3a043ba77011ed448399fac3f45b50b9ddd47704 assets/polaris_rpg/models/item/wind_bow_pulling_1.json
 db3d04e0a8756c4dd2eb3f36a40ee7724e68d5b3 assets/polaris_rpg/models/item/wind_bow_pulling_2.json
 f9193ebcc07d3bc092a99e991f998c2074001848 data/polaris_rpg/loot_tables/blocks/dimensional_storage.json
+182e1c61581c3931b275a97fbce725ba7bcd3390 data/polaris_rpg/tags/items/backpacks.json
+af750167e774c543644f01b72c2b4d7eb400b863 data/polaris_rpg/tags/items/dimensional_storages.json

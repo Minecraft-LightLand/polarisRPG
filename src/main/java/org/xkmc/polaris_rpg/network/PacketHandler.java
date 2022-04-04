@@ -11,10 +11,7 @@ import net.minecraftforge.fml.network.PacketDistributor;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
 import org.xkmc.polaris_rpg.init.PolarisRPG;
 import org.xkmc.polaris_rpg.network.config.ConfigSyncManager;
-import org.xkmc.polaris_rpg.network.packets.EffectToClient;
-import org.xkmc.polaris_rpg.network.packets.EmptyRightClickToServer;
-import org.xkmc.polaris_rpg.network.packets.SlotClickToServer;
-import org.xkmc.polaris_rpg.network.packets.TargetSetPacket;
+import org.xkmc.polaris_rpg.network.packets.*;
 
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -28,7 +25,9 @@ public enum PacketHandler {
 	EFFECT_SYNC(EffectToClient.class, EffectToClient::new, PLAY_TO_CLIENT),
 	EMPTY_RIGHT_CLICK(EmptyRightClickToServer.class, PLAY_TO_SERVER),
 	CONFIG_SYNC(ConfigSyncManager.SyncPacket.class, PLAY_TO_CLIENT),
-	SLOT_CLICK_TO_SERVER(SlotClickToServer.class, PLAY_TO_SERVER);
+	SLOT_CLICK_TO_SERVER(SlotClickToServer.class, PLAY_TO_SERVER),
+	CAP_TO_CLIENT(CapToClient.class, PLAY_TO_CLIENT),
+	CAP_TO_SERVER(CapToServer.class, PLAY_TO_SERVER);
 
 	public static final ResourceLocation CHANNEL_NAME = new ResourceLocation(PolarisRPG.MODID, "main");
 	public static final int NETWORK_VERSION = 1;

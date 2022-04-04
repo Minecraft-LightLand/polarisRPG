@@ -15,6 +15,7 @@ import org.apache.logging.log4j.Logger;
 import org.xkmc.polaris_rpg.content.capability.worldstorage.WorldStorage;
 import org.xkmc.polaris_rpg.event.*;
 import org.xkmc.polaris_rpg.init.data.AdvancementGen;
+import org.xkmc.polaris_rpg.init.data.PolarisTags;
 import org.xkmc.polaris_rpg.init.data.LangData;
 import org.xkmc.polaris_rpg.init.data.RecipeGen;
 import org.xkmc.polaris_rpg.init.registry.*;
@@ -36,6 +37,7 @@ public class PolarisRPG {
 		PolarisContainers.register();
 		PolarisRecipeTypes.register();
 		PolarisMagic.register();
+		PolarisTags.register();
 
 		REGISTRATE.addDataGenerator(ProviderType.LANG, LangData::genLang);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, RecipeGen::genRecipe);
