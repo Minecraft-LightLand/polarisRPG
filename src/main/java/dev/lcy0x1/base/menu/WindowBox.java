@@ -1,4 +1,4 @@
-package dev.lcy0x1.base;
+package dev.lcy0x1.base.menu;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;

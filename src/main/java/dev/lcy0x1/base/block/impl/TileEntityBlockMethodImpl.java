@@ -1,11 +1,15 @@
 package dev.lcy0x1.base.block.impl;
 
 import com.tterrag.registrate.util.entry.TileEntityEntry;
+import dev.lcy0x1.base.block.NameSetable;
 import dev.lcy0x1.base.block.mult.OnClickBlockMethod;
+import dev.lcy0x1.base.block.mult.SetPlacedByBlockMethod;
 import dev.lcy0x1.base.block.one.TitleEntityBlockMethod;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.container.INamedContainerProvider;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -16,11 +20,11 @@ import net.minecraft.world.World;
 
 import java.util.function.Supplier;
 
-public class TitleEntityBlockMethodImpl implements TitleEntityBlockMethod, OnClickBlockMethod {
+public class TileEntityBlockMethodImpl implements TitleEntityBlockMethod, OnClickBlockMethod, SetPlacedByBlockMethod {
 
 	private final Supplier<TileEntityEntry<?>> f;
 
-	public TitleEntityBlockMethodImpl(Supplier<TileEntityEntry<?>> f) {
+	public TileEntityBlockMethodImpl(Supplier<TileEntityEntry<?>> f) {
 		this.f = f;
 	}
 
@@ -41,4 +45,14 @@ public class TitleEntityBlockMethodImpl implements TitleEntityBlockMethod, OnCli
 		return ActionResultType.PASS;
 	}
 
+	@Override
+	public void setPlacedBy(World level, BlockPos pos, BlockState state, LivingEntity entity, ItemStack stack) {
+		if (stack.hasCustomHoverName()) {
+			TileEntity blockentity = level.getBlockEntity(pos);
+			if (blockentity instanceof NameSetable) {
+				((NameSetable) blockentity).setCustomName(stack.getHoverName());
+			}
+		}
+
+	}
 }

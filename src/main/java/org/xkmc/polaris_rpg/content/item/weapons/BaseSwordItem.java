@@ -16,6 +16,7 @@ import net.minecraft.util.ActionResultType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
+import org.xkmc.polaris_rpg.content.profession.ToolProficiency;
 
 import javax.annotation.Nullable;
 import java.util.List;

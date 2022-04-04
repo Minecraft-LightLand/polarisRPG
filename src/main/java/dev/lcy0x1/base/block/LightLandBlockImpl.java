@@ -1,21 +1,21 @@
 package dev.lcy0x1.base.block;
 
 import dev.lcy0x1.base.block.mult.*;
-import dev.lcy0x1.base.block.one.BlockPowerBlockMethod;
-import dev.lcy0x1.base.block.one.LightBlockMethod;
-import dev.lcy0x1.base.block.one.MirrorRotateBlockMethod;
-import dev.lcy0x1.base.block.one.TitleEntityBlockMethod;
+import dev.lcy0x1.base.block.one.*;
 import dev.lcy0x1.base.block.type.BlockMethod;
 import dev.lcy0x1.base.block.type.MultipleBlockMethod;
 import dev.lcy0x1.base.block.type.SingletonBlockMethod;
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.loot.LootContext;
 import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
@@ -27,6 +27,7 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.*;
 import java.util.stream.Stream;
@@ -75,7 +76,7 @@ public class LightLandBlockImpl extends LightLandBlock {
 	@Override
 	public final int getLightValue(BlockState bs, IBlockReader w, BlockPos pos) {
 		return impl.one(LightBlockMethod.class).map(e -> e.getLightValue(bs, w, pos))
-				.orElse(super.getLightValue(bs, w, pos));
+				.orElseGet(() -> super.getLightValue(bs, w, pos));
 	}
 
 	@Override
@@ -156,6 +157,23 @@ public class LightLandBlockImpl extends LightLandBlock {
 	@Override
 	public void animateTick(BlockState state, World world, BlockPos pos, Random r) {
 		impl.execute(AnimateTickBlockMethod.class).forEach(e -> e.animateTick(state, world, pos, r));
+	}
+
+	@Override
+	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+		return impl.one(SpecialDropBlockMethod.class).map(e -> e.getDrops(state, builder))
+				.orElseGet(() -> super.getDrops(state, builder));
+	}
+
+	@Override
+	public void setPlacedBy(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+		impl.execute(SetPlacedByBlockMethod.class).forEach(e -> e.setPlacedBy(world, pos, state, placer, stack));
+	}
+
+	@Override
+	public ItemStack getCloneItemStack(IBlockReader world, BlockPos pos, BlockState state) {
+		return impl.one(GetBlockItemBlockMethod.class).map(e -> e.getCloneItemStack(world, pos, state))
+				.orElseGet(() -> super.getCloneItemStack(world, pos, state));
 	}
 
 	public static class BlockImplementor {

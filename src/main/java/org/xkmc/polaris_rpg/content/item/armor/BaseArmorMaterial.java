@@ -8,6 +8,7 @@ import net.minecraft.util.LazyValue;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.xkmc.polaris_rpg.content.profession.Profession;
 import org.xkmc.polaris_rpg.init.PolarisRPG;
 
 import java.util.Arrays;

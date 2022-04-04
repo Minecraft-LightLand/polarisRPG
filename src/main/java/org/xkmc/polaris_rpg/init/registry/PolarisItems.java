@@ -3,6 +3,7 @@ package org.xkmc.polaris_rpg.init.registry;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import net.minecraft.item.DyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.ResourceLocation;
@@ -19,6 +20,9 @@ import org.xkmc.polaris_rpg.content.archer.feature.bow.GlowTargetAimFeature;
 import org.xkmc.polaris_rpg.content.archer.feature.bow.WindBowFeature;
 import org.xkmc.polaris_rpg.content.archer.item.GenericArrowItem;
 import org.xkmc.polaris_rpg.content.archer.item.GenericBowItem;
+import org.xkmc.polaris_rpg.content.backpack.BackpackItem;
+import org.xkmc.polaris_rpg.content.backpack.EnderBackpackItem;
+import org.xkmc.polaris_rpg.content.backpack.WorldChestItem;
 import org.xkmc.polaris_rpg.init.PolarisRPG;
 
 import java.util.function.Consumer;
@@ -32,24 +36,67 @@ public class PolarisItems {
 		REGISTRATE.itemGroup(() -> ItemGroup.TAB_COMBAT);
 	}
 
+	public static final ItemEntry<BackpackItem>[] BACKPACKS;
+	public static final ItemEntry<WorldChestItem>[] DIMENSIONAL_STORAGE;
+	public static final ItemEntry<EnderBackpackItem> ENDER_BACKPACK;
 	public static final ItemEntry<GenericBowItem> STARTER_BOW, IRON_BOW, MAGNIFY_BOW, ENDER_AIM_BOW, WIND_BOW;
 	public static final ItemEntry<GenericArrowItem> STARTER_ARROW, IRON_ARROW, NO_FALL_ARROW, ENDER_ARROW, TNT_2_ARROW;
 
 	static {
-		STARTER_BOW = genBow("starter_bow", 600, 0, 0, FeatureList::end);
-		IRON_BOW = genBow("iron_bow", 1200, 1, 0, 40, 3.9f, FeatureList::end);
-		MAGNIFY_BOW = genBow("magnify_bow", 600, 0, 0, 20, 3.0f, 60, 0.9f, e -> e.add(new GlowTargetAimFeature(128)));
-		ENDER_AIM_BOW = genBow("ender_aim_bow", 8, -1, 0, e -> e.add(new EnderShootFeature(128)));
-		WIND_BOW = genBow("wind_bow", 600, 0, 1, 10, 3.9f, e -> e
-				.add(new NoFallArrowFeature(40))
-				.add(new WindBowFeature()));
+		{
+			BACKPACKS = new ItemEntry[16];
+			for (int i = 0; i < 16; i++) {
+				DyeColor color = DyeColor.values()[i];
+				BACKPACKS[i] = REGISTRATE.item("backpack_" + color.getName(), p -> new BackpackItem(color, p.stacksTo(1)))
+						.model(PolarisItems::createBackpackModel)
+						.color(() -> () -> (stack, val) -> val == 0 ? -1 : ((BackpackItem) stack.getItem()).color.getMaterialColor().col)
+						.defaultLang().register();
+			}
+			DIMENSIONAL_STORAGE = new ItemEntry[16];
+			for (int i = 0; i < 16; i++) {
+				DyeColor color = DyeColor.values()[i];
+				DIMENSIONAL_STORAGE[i] = REGISTRATE.item("dimensional_storage_" + color.getName(), p -> new WorldChestItem(color, p.stacksTo(1)))
+						.model(PolarisItems::createWorldChestModel)
+						.color(() -> () -> (stack, val) -> val == 0 ? -1 : ((WorldChestItem) stack.getItem()).color.getMaterialColor().col)
+						.defaultLang().register();
+			}
+			ENDER_BACKPACK = REGISTRATE.item("ender_backpack", EnderBackpackItem::new).model(PolarisItems::createEnderBackpackModel).defaultLang().register();
+		}
+		{
+			STARTER_BOW = genBow("starter_bow", 600, 0, 0, FeatureList::end);
+			IRON_BOW = genBow("iron_bow", 1200, 1, 0, 40, 3.9f, FeatureList::end);
+			MAGNIFY_BOW = genBow("magnify_bow", 600, 0, 0, 20, 3.0f, 60, 0.9f, e -> e.add(new GlowTargetAimFeature(128)));
+			ENDER_AIM_BOW = genBow("ender_aim_bow", 8, -1, 0, e -> e.add(new EnderShootFeature(128)));
+			WIND_BOW = genBow("wind_bow", 600, 0, 1, 10, 3.9f, e -> e
+					.add(new NoFallArrowFeature(40))
+					.add(new WindBowFeature()));
 
-		STARTER_ARROW = genArrow("starter_arrow", 0, 0, true, FeatureList::end);
-		IRON_ARROW = genArrow("iron_arrow", 1, 1, false, FeatureList::end);
-		NO_FALL_ARROW = genArrow("no_fall_arrow", 0, 0, false, e -> e.add(new NoFallArrowFeature(40)));
-		ENDER_ARROW = genArrow("ender_arrow", -1, 0, false, e -> e.add(new EnderArrowFeature()));
-		TNT_2_ARROW = genArrow("tnt_arrow_lv2", 0, 0, false, e -> e.add(new ExplodeArrowFeature(4)));
+			STARTER_ARROW = genArrow("starter_arrow", 0, 0, true, FeatureList::end);
+			IRON_ARROW = genArrow("iron_arrow", 1, 1, false, FeatureList::end);
+			NO_FALL_ARROW = genArrow("no_fall_arrow", 0, 0, false, e -> e.add(new NoFallArrowFeature(40)));
+			ENDER_ARROW = genArrow("ender_arrow", -1, 0, false, e -> e.add(new EnderArrowFeature()));
+			TNT_2_ARROW = genArrow("tnt_arrow_lv2", 0, 0, false, e -> e.add(new ExplodeArrowFeature(4)));
+		}
+	}
 
+
+	private static void createBackpackModel(DataGenContext<Item, BackpackItem> ctx, RegistrateItemModelProvider pvd) {
+		ItemModelBuilder builder = pvd.withExistingParent(ctx.getName(), "lightland:backpack");
+		builder.override().predicate(new ResourceLocation("open"), 1).model(
+				new ModelFile.UncheckedModelFile(PolarisRPG.MODID + ":item/backpack_open"));
+	}
+
+	private static void createWorldChestModel(DataGenContext<Item, WorldChestItem> ctx, RegistrateItemModelProvider pvd) {
+		ItemModelBuilder builder = pvd.withExistingParent(ctx.getName(), "lightland:dimensional_storage");
+	}
+
+	private static void createEnderBackpackModel(DataGenContext<Item, EnderBackpackItem> ctx, RegistrateItemModelProvider pvd) {
+		pvd.withExistingParent("ender_backpack_open", "generated")
+				.texture("layer0", "item/ender_backpack_open");
+		ItemModelBuilder builder = pvd.withExistingParent("ender_backpack", "generated");
+		builder.texture("layer0", "item/ender_backpack");
+		builder.override().predicate(new ResourceLocation("open"), 1).model(
+				new ModelFile.UncheckedModelFile(PolarisRPG.MODID + ":item/ender_backpack_open"));
 	}
 
 	public static ItemEntry<GenericBowItem> genBow(String id, int durability, float damage, int punch, Consumer<FeatureList> consumer) {

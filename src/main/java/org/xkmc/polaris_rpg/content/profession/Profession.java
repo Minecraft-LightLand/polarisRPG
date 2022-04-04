@@ -1,9 +1,10 @@
-package org.xkmc.polaris_rpg.content.item.armor;
+package org.xkmc.polaris_rpg.content.profession;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import org.xkmc.polaris_rpg.content.item.armor.BaseArmorItem;
 
 import javax.annotation.Nullable;
 

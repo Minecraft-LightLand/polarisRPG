@@ -1,4 +1,4 @@
-package dev.lcy0x1.base;
+package dev.lcy0x1.base.menu;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.text.CharacterManager;
