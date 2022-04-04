@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
-import org.xkmc.polaris_rpg.content.armor.BaseArmorItem;
+import org.xkmc.polaris_rpg.content.item.armor.BaseArmorItem;
 
 public class DamageUtil {
 

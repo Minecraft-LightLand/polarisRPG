@@ -34,4 +34,9 @@ public class PlayerEntityMixin {
 		}
 	}
 
+	@Inject(at = @At("HEAD"), method = "getExperienceReward", cancellable = true)
+	public void getExperienceReward(PlayerEntity entity, CallbackInfoReturnable<Integer> ci) {
+		ci.setReturnValue(0);
+	}
+
 }
