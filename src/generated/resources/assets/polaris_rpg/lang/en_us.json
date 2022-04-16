@@ -1,5 +1,7 @@
 {
   "block.polaris_rpg.dimensional_storage": "Dimensional Storage",
+  "block.polaris_rpg.ritual_core": "Ritual Core",
+  "block.polaris_rpg.ritual_side": "Ritual Side",
   "container.polaris_rpg.backpack": "Backpack",
   "container.polaris_rpg.dimensional_storage": "Dimensional Storage",
   "effect.polaris_rpg.quick_pull": "Quick Pull",
