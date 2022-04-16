@@ -1,0 +1,28 @@
+{
+  "stack": {
+    "id": "polaris_rpg:piglin_teeth",
+    "Count": 1
+  },
+  "chance": 1.0,
+  "conditions": [
+    {
+      "condition": "polaris_rpg:entity_type",
+      "generated": {
+        "type": [
+          "minecraft:zombified_piglin",
+          "minecraft:piglin"
+        ]
+      }
+    },
+    {
+      "condition": "minecraft:killed_by_player"
+    },
+    {
+      "condition": "polaris_rpg:exceed_damage",
+      "generated": {
+        "exceed": 10.0
+      }
+    }
+  ],
+  "type": "polaris_rpg:main"
+}

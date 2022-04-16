@@ -60,7 +60,7 @@ public class PolarisLootModifier extends LootModifier {
 	@Override
 	protected List<ItemStack> doApply(List<ItemStack> loot, LootContext context) {
 		if (context.getRandom().nextFloat() < config.chance)
-			loot.add(config.stack);
+			loot.add(config.stack.copy());
 		return loot;
 	}
 

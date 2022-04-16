@@ -1,0 +1,53 @@
+{
+  "type": "polaris_rpg:ritual",
+  "core": {
+	"input": {
+	  "item": "minecraft:netherite_ingot"
+	},
+	"output": {
+	  "item": "polaris_rpg:triple_ingot"
+	}
+  },
+  "side": [
+	{
+	  "input": {
+		"item": "polaris_rpg:soul_ingot"
+	  }
+	},
+	{
+	  "input": {
+		"item": "polaris_rpg:soulgold_ingot"
+	  }
+	},
+	{
+	  "input": {
+		"item": "polaris_rpg:soul_ingot"
+	  }
+	},
+	{
+	  "input": {
+		"item": "polaris_rpg:soulgold_ingot"
+	  }
+	},
+	{
+	  "input": {
+		"item": "polaris_rpg:soulgold_ingot"
+	  }
+	},
+	{
+	  "input": {
+		"item": "polaris_rpg:soul_ingot"
+	  }
+	},
+	{
+	  "input": {
+		"item": "polaris_rpg:soulgold_ingot"
+	  }
+	},
+	{
+	  "input": {
+		"item": "polaris_rpg:soul_ingot"
+	  }
+	}
+  ]
+}

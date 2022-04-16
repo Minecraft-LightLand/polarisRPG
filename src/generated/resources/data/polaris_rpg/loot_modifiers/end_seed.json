@@ -1,0 +1,21 @@
+{
+  "stack": {
+    "id": "polaris_rpg:end_seed",
+    "Count": 1
+  },
+  "chance": 1.0,
+  "conditions": [
+    {
+      "condition": "polaris_rpg:entity_type",
+      "generated": {
+        "type": [
+          "minecraft:ender_dragon"
+        ]
+      }
+    },
+    {
+      "condition": "minecraft:killed_by_player"
+    }
+  ],
+  "type": "polaris_rpg:main"
+}

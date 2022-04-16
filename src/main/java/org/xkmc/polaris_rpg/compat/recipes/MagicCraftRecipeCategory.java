@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TranslationTextComponent;
 import org.xkmc.polaris_rpg.content.ritual.AbstractMagicCraftRecipe;
 import org.xkmc.polaris_rpg.init.PolarisRPG;
 import org.xkmc.polaris_rpg.init.registry.PolarisBlocks;
@@ -53,7 +54,7 @@ public class MagicCraftRecipeCategory implements IRecipeCategory<AbstractMagicCr
 
 	@Override
 	public String getTitle() {
-		return PolarisBlocks.RITUAL_CORE.get().getDescriptionId();
+		return new TranslationTextComponent(PolarisBlocks.RITUAL_CORE.get().getDescriptionId()).getContents();
 	}
 
 	@Override

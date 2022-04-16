@@ -16,6 +16,7 @@ import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.xkmc.polaris_rpg.init.registry.PolarisBlocks;
 import org.xkmc.polaris_rpg.init.registry.PolarisItems;
 import org.xkmc.polaris_rpg.init.registry.PolarisRecipeTypes;
 import org.xkmc.polaris_rpg.init.registry.SimpleItems;
@@ -76,11 +77,23 @@ public class RecipeGen {
 			pvd.smelting(DataIngredient.items(SimpleItems.SOUL_ESSENCE.get()), SimpleItems.SOUL_FLAME::get, 100, 2400);
 			pvd.blasting(DataIngredient.items(SimpleItems.SOUL_ESSENCE.get()), SimpleItems.SOUL_FLAME::get, 100, 1200);
 
-			//SOUL_INGOT
-			//GHAST_CRY
-			//SOULGOLD_INGOT
-			//TRIPLE_INGOT
-			//SHINING_NETHER_STAR
+			unlock(pvd, new ShapedRecipeBuilder(SimpleItems.ORE_HEART.entry.get(), 1)::unlockedBy, Items.DIAMOND)
+					.pattern(" A ").pattern("BCD").pattern("EFG")
+					.define('A', Items.IRON_INGOT).define('B', Items.GOLD_INGOT)
+					.define('C', Items.DIAMOND).define('D', Items.LAPIS_LAZULI)
+					.define('E', Items.EMERALD).define('F', Items.COAL)
+					.define('G', Items.REDSTONE).save(pvd);
+
+			unlock(pvd, new ShapedRecipeBuilder(PolarisBlocks.RITUAL_CORE.get(), 1)::unlockedBy, Items.GOLD_INGOT)
+					.pattern("AAA").pattern("BCB").pattern("DDD")
+					.define('A', Items.GOLD_INGOT).define('B', Items.IRON_NUGGET)
+					.define('C', ItemTags.PLANKS).define('D', Items.GOLD_NUGGET).save(pvd);
+
+			unlock(pvd, new ShapedRecipeBuilder(PolarisBlocks.RITUAL_SIDE.get(), 1)::unlockedBy, Items.IRON_INGOT)
+					.pattern("AAA").pattern("BCB").pattern("DDD")
+					.define('A', Items.IRON_INGOT).define('B', Items.IRON_NUGGET)
+					.define('C', ItemTags.PLANKS).define('D', Items.GOLD_NUGGET).save(pvd);
+
 		}
 
 

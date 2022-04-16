@@ -1,0 +1,53 @@
+{
+  "type": "polaris_rpg:ritual",
+  "core": {
+	"input": {
+	  "item": "polaris_rpg:soul_gem"
+	},
+	"output": {
+	  "item": "polaris_rpg:soul_ingot"
+	}
+  },
+  "side": [
+	{
+	  "input": {
+		"item": "minecraft:iron_ingot"
+	  }
+	},
+	{
+	  "input": {
+		"item": "minecraft:iron_ingot"
+	  }
+	},
+	{
+	  "input": {
+		"item": "minecraft:iron_ingot"
+	  }
+	},
+	{
+	  "input": {
+		"item": "minecraft:iron_ingot"
+	  }
+	},
+	{
+	  "input": {
+		"item": "minecraft:iron_ingot"
+	  }
+	},
+	{
+	  "input": {
+		"item": "minecraft:iron_ingot"
+	  }
+	},
+	{
+	  "input": {
+		"item": "minecraft:iron_ingot"
+	  }
+	},
+	{
+	  "input": {
+		"item": "minecraft:iron_ingot"
+	  }
+	}
+  ]
+}

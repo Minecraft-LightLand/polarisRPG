@@ -1,6 +1,6 @@
 {
   "stack": {
-    "id": "polaris_rpg:zombie_brain",
+    "id": "polaris_rpg:gel",
     "Count": 1
   },
   "chance": 1.0,
@@ -9,16 +9,16 @@
       "condition": "polaris_rpg:entity_type",
       "generated": {
         "type": [
-          "minecraft:zombie",
-          "minecraft:drowned",
-          "minecraft:husk"
+          "minecraft:slime",
+          "minecraft:magma_cube"
         ]
       }
     },
     {
-      "condition": "polaris_rpg:exceed_damage",
+      "condition": "polaris_rpg:damage_source",
       "generated": {
-        "exceed": 10.0
+        "msg": "indirectMagic",
+        "min_damage": 2.0
       }
     }
   ],

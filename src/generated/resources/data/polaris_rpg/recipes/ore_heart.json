@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    "BCD",
+    "EFG"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:iron_ingot"
+    },
+    "B": {
+      "item": "minecraft:gold_ingot"
+    },
+    "C": {
+      "item": "minecraft:diamond"
+    },
+    "D": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "E": {
+      "item": "minecraft:emerald"
+    },
+    "F": {
+      "item": "minecraft:coal"
+    },
+    "G": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "polaris_rpg:ore_heart"
+  }
+}

@@ -26,7 +26,7 @@ public class PolarisRecipeTypes {
 			REGISTRATE.simple("backpack_upgrade", IRecipeSerializer.class, () -> new AbstractSmithingRecipe.Serializer<>(BackpackUpgradeRecipe::new));
 
 	public static final RegistryEntry<BaseRecipe.RecType<BasicMagicCraftRecipe, AbstractMagicCraftRecipe<?>, RitualCore.Inv>> RSM_CRAFT =
-			REGISTRATE.simple("craft_shapeless", IRecipeSerializer.class, () -> new BaseRecipe.RecType<>(BasicMagicCraftRecipe.class, RT_CRAFT));
+			REGISTRATE.simple("ritual", IRecipeSerializer.class, () -> new BaseRecipe.RecType<>(BasicMagicCraftRecipe.class, RT_CRAFT));
 
 	public static void register() {
 	}

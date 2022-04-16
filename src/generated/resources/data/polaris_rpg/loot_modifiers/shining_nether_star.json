@@ -1,0 +1,24 @@
+{
+  "stack": {
+    "id": "polaris_rpg:shining_nether_star",
+    "Count": 1
+  },
+  "chance": 1.0,
+  "conditions": [
+    {
+      "condition": "polaris_rpg:entity_type",
+      "generated": {
+        "type": [
+          "minecraft:wither"
+        ]
+      }
+    },
+    {
+      "condition": "polaris_rpg:exceed_damage",
+      "generated": {
+        "exceed": 50.0
+      }
+    }
+  ],
+  "type": "polaris_rpg:main"
+}

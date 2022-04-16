@@ -34,7 +34,7 @@ public class ExceedDamageCondition extends BaseCondition.Config<ExceedDamageCond
 			return false;
 		}
 		CombatEntry last = list.get(list.size() - 1);
-		return last.getDamage() - last.health > exceed;
+		return last.getDamage() - last.health >= exceed;
 	}
 
 }

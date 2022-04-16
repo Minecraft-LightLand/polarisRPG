@@ -14,7 +14,6 @@
 	"starter_arrow": "基础箭",
 	"tnt_arrow_lv2": "TNT箭",
 
-
 	"deep_ocean_soul": "海洋精魄",
 	"dim_0": "低级次元碎片",
 	"dim_1": "中级次元碎片",
@@ -45,7 +44,9 @@
 	"zombie_brain": "异化脑子"
   },
   "block.polaris_rpg": {
-	"dimensional_storage": "空间箱子"
+	"dimensional_storage": "空间箱子",
+	"ritual_core": "仪式祭坛",
+	"ritual_side": "仪式祭台"
   },
   "-cartesian": {
 	"backpack": {

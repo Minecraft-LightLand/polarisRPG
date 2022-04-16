@@ -1,7 +1,19 @@
 {
   "replace": false,
   "entries": [
-    "polaris_rpg:rune_gem_drop",
-    "polaris_rpg:zombie_brain_drop"
+    "polaris_rpg:wither_bone",
+    "polaris_rpg:deep_ocean_soul",
+    "polaris_rpg:piglin_teeth",
+    "polaris_rpg:ghast_cry",
+    "polaris_rpg:hard_bone",
+    "polaris_rpg:zombie_brain",
+    "polaris_rpg:end_seed",
+    "polaris_rpg:hoglin_teeth",
+    "polaris_rpg:soul_remnant",
+    "polaris_rpg:gel",
+    "polaris_rpg:ender_emerald",
+    "polaris_rpg:shulker_heart",
+    "polaris_rpg:rune_gem",
+    "polaris_rpg:shining_nether_star"
   ]
 }

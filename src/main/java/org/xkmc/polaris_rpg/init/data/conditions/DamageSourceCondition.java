@@ -47,7 +47,7 @@ public class DamageSourceCondition extends BaseCondition.Config<DamageSourceCond
 			return false;
 		}
 		CombatEntry last = list.get(list.size() - 1);
-		return last.getDamage() > min_damage;
+		return last.getDamage() >= min_damage;
 	}
 
 }

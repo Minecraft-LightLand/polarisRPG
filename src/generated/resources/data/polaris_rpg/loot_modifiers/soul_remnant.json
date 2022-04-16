@@ -1,0 +1,19 @@
+{
+  "stack": {
+    "id": "polaris_rpg:soul_remnant",
+    "Count": 1
+  },
+  "chance": 0.01,
+  "conditions": [
+    {
+      "condition": "minecraft:killed_by_player"
+    },
+    {
+      "condition": "polaris_rpg:exceed_damage",
+      "generated": {
+        "exceed": 10.0
+      }
+    }
+  ],
+  "type": "polaris_rpg:main"
+}

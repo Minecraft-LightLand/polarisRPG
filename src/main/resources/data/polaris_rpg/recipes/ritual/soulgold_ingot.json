@@ -1,0 +1,53 @@
+{
+  "type": "polaris_rpg:ritual",
+  "core": {
+	"input": {
+	  "item": "minecraft:gold_ingot"
+	},
+	"output": {
+	  "item": "polaris_rpg:soulgold_ingot"
+	}
+  },
+  "side": [
+	{
+	  "input": {
+		"item": "polaris_rpg:soul_flame"
+	  }
+	},
+	{
+	  "input": {
+		"item": "polaris_rpg:soul_flame"
+	  }
+	},
+	{
+	  "input": {
+		"item": "polaris_rpg:soul_flame"
+	  }
+	},
+	{
+	  "input": {
+		"item": "polaris_rpg:soul_flame"
+	  }
+	},
+	{
+	  "input": {
+		"item": "polaris_rpg:soul_flame"
+	  }
+	},
+	{
+	  "input": {
+		"item": "polaris_rpg:soul_flame"
+	  }
+	},
+	{
+	  "input": {
+		"item": "polaris_rpg:soul_flame"
+	  }
+	},
+	{
+	  "input": {
+		"item": "polaris_rpg:soul_flame"
+	  }
+	}
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "stack": {
+    "id": "polaris_rpg:rune_gem",
+    "Count": 1
+  },
+  "chance": 1.0,
+  "conditions": [
+    {
+      "condition": "polaris_rpg:entity_type",
+      "generated": {
+        "type": [
+          "minecraft:shulker"
+        ]
+      }
+    },
+    {
+      "condition": "polaris_rpg:damage_source",
+      "generated": {
+        "msg": "indirectMagic",
+        "min_damage": 2.0
+      }
+    }
+  ],
+  "type": "polaris_rpg:main"
+}
