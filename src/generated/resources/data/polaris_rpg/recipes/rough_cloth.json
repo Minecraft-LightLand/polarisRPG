@@ -7,16 +7,16 @@
   ],
   "key": {
     "A": {
-      "tag": "forge:leather"
+      "item": "minecraft:leather"
     },
     "B": {
-      "item": "minecraft:ender_pearl"
+      "tag": "minecraft:wool"
     },
     "C": {
-      "item": "minecraft:gold_nugget"
+      "item": "minecraft:string"
     }
   },
   "result": {
-    "item": "polaris_rpg:ender_pocket"
+    "item": "polaris_rpg:rough_cloth"
   }
 }

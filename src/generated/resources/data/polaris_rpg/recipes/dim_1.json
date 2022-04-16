@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CBC",
+    "BAB",
+    "CBC"
+  ],
+  "key": {
+    "A": {
+      "item": "polaris_rpg:ender_emerald"
+    },
+    "B": {
+      "item": "polaris_rpg:dim_0"
+    },
+    "C": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "result": {
+    "item": "polaris_rpg:dim_1"
+  }
+}

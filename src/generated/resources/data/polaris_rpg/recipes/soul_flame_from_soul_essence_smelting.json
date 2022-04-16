@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "polaris_rpg:soul_essence"
+  },
+  "result": "polaris_rpg:soul_flame",
+  "experience": 100.0,
+  "cookingtime": 2400
+}

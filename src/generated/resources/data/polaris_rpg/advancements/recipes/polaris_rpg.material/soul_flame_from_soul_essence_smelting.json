@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "polaris_rpg:soul_flame_from_soul_essence_smelting"
+    ]
+  },
+  "criteria": {
+    "has_soul_essence": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "polaris_rpg:soul_essence"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "polaris_rpg:soul_flame_from_soul_essence_smelting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_soul_essence",
+      "has_the_recipe"
+    ]
+  ]
+}

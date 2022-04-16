@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "polaris_rpg:soul_essence"
+    ]
+  },
+  "criteria": {
+    "has_soul_remnant": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "polaris_rpg:soul_remnant"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "polaris_rpg:soul_essence"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_soul_remnant",
+      "has_the_recipe"
+    ]
+  ]
+}

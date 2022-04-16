@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CBC",
+    "BAB",
+    "CBC"
+  ],
+  "key": {
+    "A": {
+      "item": "polaris_rpg:end_seed"
+    },
+    "B": {
+      "item": "polaris_rpg:dim_1"
+    },
+    "C": {
+      "item": "polaris_rpg:shulker_heart"
+    }
+  },
+  "result": {
+    "item": "polaris_rpg:dim_2"
+  }
+}

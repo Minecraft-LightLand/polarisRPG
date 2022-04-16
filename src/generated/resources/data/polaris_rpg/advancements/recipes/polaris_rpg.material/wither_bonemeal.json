@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "polaris_rpg:wither_bonemeal"
+    ]
+  },
+  "criteria": {
+    "has_wither_bone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "polaris_rpg:wither_bone"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "polaris_rpg:wither_bonemeal"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_wither_bone",
+      "has_the_recipe"
+    ]
+  ]
+}

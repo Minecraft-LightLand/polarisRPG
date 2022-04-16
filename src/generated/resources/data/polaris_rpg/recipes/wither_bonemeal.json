@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "polaris_rpg:wither_bone"
+    }
+  ],
+  "result": {
+    "item": "polaris_rpg:wither_bonemeal",
+    "count": 3
+  }
+}
