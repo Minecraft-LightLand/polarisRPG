@@ -3,6 +3,7 @@ package org.xkmc.polaris_rpg.init;
 import com.tterrag.registrate.Registrate;
 import com.tterrag.registrate.providers.ProviderType;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -14,10 +15,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.xkmc.polaris_rpg.content.capability.worldstorage.WorldStorage;
 import org.xkmc.polaris_rpg.event.*;
-import org.xkmc.polaris_rpg.init.data.AdvancementGen;
-import org.xkmc.polaris_rpg.init.data.PolarisTags;
-import org.xkmc.polaris_rpg.init.data.LangData;
-import org.xkmc.polaris_rpg.init.data.RecipeGen;
+import org.xkmc.polaris_rpg.init.data.*;
+import org.xkmc.polaris_rpg.init.data.conditions.BaseCondition;
 import org.xkmc.polaris_rpg.init.registry.*;
 import org.xkmc.polaris_rpg.network.PacketHandler;
 
@@ -38,10 +37,13 @@ public class PolarisRPG {
 		PolarisRecipeTypes.register();
 		PolarisMagic.register();
 		PolarisTags.register();
+		PolarisLootModifier.register();
 
 		REGISTRATE.addDataGenerator(ProviderType.LANG, LangData::genLang);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, RecipeGen::genRecipe);
 		REGISTRATE.addDataGenerator(ProviderType.ADVANCEMENT, AdvancementGen::genAdvancement);
+		REGISTRATE.addDataGenerator(ProviderType.LOOT, LootGen::genLoot);
+		REGISTRATE.<GlobalLootModifierSerializer<?>>addRegisterCallback(GlobalLootModifierSerializer.class, BaseCondition::register);
 
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
@@ -73,6 +75,7 @@ public class PolarisRPG {
 	}
 
 	public void gatherData(GatherDataEvent event) {
+		LootGen.genModifier(event);
 	}
 
 	@SubscribeEvent

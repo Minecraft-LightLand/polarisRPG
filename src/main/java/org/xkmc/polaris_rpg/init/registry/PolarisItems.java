@@ -11,7 +11,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.util.NonNullLazy;
-import org.xkmc.polaris_rpg.content.archer.feature.FeatureList;
+import org.xkmc.polaris_rpg.content.archer.GenericArrowItem;
+import org.xkmc.polaris_rpg.content.archer.GenericBowItem;
 import org.xkmc.polaris_rpg.content.archer.arrow.EnderArrowFeature;
 import org.xkmc.polaris_rpg.content.archer.arrow.ExplodeArrowFeature;
 import org.xkmc.polaris_rpg.content.archer.arrow.NoFallArrowFeature;
@@ -19,8 +20,7 @@ import org.xkmc.polaris_rpg.content.archer.bow.DefaultShootFeature;
 import org.xkmc.polaris_rpg.content.archer.bow.EnderShootFeature;
 import org.xkmc.polaris_rpg.content.archer.bow.GlowTargetAimFeature;
 import org.xkmc.polaris_rpg.content.archer.bow.WindBowFeature;
-import org.xkmc.polaris_rpg.content.archer.GenericArrowItem;
-import org.xkmc.polaris_rpg.content.archer.GenericBowItem;
+import org.xkmc.polaris_rpg.content.archer.feature.FeatureList;
 import org.xkmc.polaris_rpg.content.backpack.BackpackItem;
 import org.xkmc.polaris_rpg.content.backpack.EnderBackpackItem;
 import org.xkmc.polaris_rpg.content.backpack.WorldChestItem;
@@ -50,15 +50,12 @@ public class PolarisItems {
 		}
 	}
 
-	public static final Tab TAB_MAIN = new Tab("material", () -> PolarisItems.ENDER_BACKPACK);
-	//public static final Tab TAB_PROF = new Tab("profession", () -> PolarisItems.STARTER_BOW);
-	//public static final Tab TAB_QUEST = new Tab("generated", () -> PolarisItems.GEN_ITEM[0][0]);
+	public static final Tab TAB_MAIN = new Tab("material", () -> SimpleItems.DIM_0.entry);
 
 	static {
 		REGISTRATE.itemGroup(() -> TAB_MAIN);
+		SimpleItems.register();
 	}
-
-	public static final ItemEntry<Item> ENDER_POCKET;
 
 	public static final ItemEntry<BackpackItem>[] BACKPACKS;
 	public static final ItemEntry<WorldChestItem>[] DIMENSIONAL_STORAGE;
@@ -68,9 +65,6 @@ public class PolarisItems {
 	public static final ItemEntry<GenericArrowItem> STARTER_ARROW, IRON_ARROW, NO_FALL_ARROW, ENDER_ARROW, TNT_2_ARROW;
 
 	static {
-		{
-			ENDER_POCKET = simpleItem("ender_pocket");
-		}
 		{
 			BACKPACKS = new ItemEntry[16];
 			for (int i = 0; i < 16; i++) {
@@ -84,9 +78,7 @@ public class PolarisItems {
 			for (int i = 0; i < 16; i++) {
 				DyeColor color = DyeColor.values()[i];
 				DIMENSIONAL_STORAGE[i] = REGISTRATE.item("dimensional_storage_" + color.getName(), p -> new WorldChestItem(color, p.stacksTo(1)))
-						.model(PolarisItems::createWorldChestModel).tag(PolarisTags.AllItemTags.DIMENSIONAL_STORAGES.tag)
-						.color(() -> () -> (stack, val) -> val == 0 ? -1 : ((WorldChestItem) stack.getItem()).color.getMaterialColor().col)
-						.defaultLang().register();
+						.defaultModel().tag(PolarisTags.AllItemTags.DIMENSIONAL_STORAGES.tag).defaultLang().register();
 			}
 			ENDER_BACKPACK = REGISTRATE.item("ender_backpack", EnderBackpackItem::new).model(PolarisItems::createEnderBackpackModel).defaultLang().register();
 		}

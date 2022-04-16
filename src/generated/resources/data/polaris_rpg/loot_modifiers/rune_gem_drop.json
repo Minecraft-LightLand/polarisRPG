@@ -1,0 +1,27 @@
+{
+  "stack": {
+    "id": "polaris_rpg:rune_gem",
+    "Count": 1
+  },
+  "chance": 1.0,
+  "conditions": [
+    {
+      "condition": "polaris_rpg:entity_type",
+      "generated": {
+        "type": [
+          "minecraft:pillager",
+          "minecraft:vindicator",
+          "minecraft:evoker"
+        ]
+      }
+    },
+    {
+      "condition": "polaris_rpg:damage_source",
+      "generated": {
+        "msg": "lightningBolt",
+        "min_damage": 1.0
+      }
+    }
+  ],
+  "type": "polaris_rpg:main"
+}

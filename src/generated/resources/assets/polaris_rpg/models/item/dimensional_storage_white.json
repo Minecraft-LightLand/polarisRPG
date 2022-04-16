@@ -1,3 +1,6 @@
 {
-  "parent": "polaris_rpg:item/dimensional_storage"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "polaris_rpg:item/dimensional_storage_white"
+  }
 }
